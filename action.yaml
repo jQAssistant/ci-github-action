@@ -1,0 +1,31 @@
+
+name: 'jQA Std CI Build'
+description: >
+  Standard CI build pipeline all subprojects of jQAssistant
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: [ 1.8.0, 9, 11 ]
+        #java-version: [ 1.8.0 ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: Build only
+        run: mvn -DskipTests -Djqassistant.skip clean install
+      - name: Unit Testing
+        run: mvn -Djqassistant.skip clean install
+      - name: Integration Testing
+        run: mvn -Djqassistant.skip -P IT clean install
+      - name: Full Build
+        run: mvn -P IT -Djqassistant.skip=false clean install
