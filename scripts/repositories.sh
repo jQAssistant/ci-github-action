@@ -11,6 +11,7 @@ repositories=(
     jqa-distribution-specification
     jqa-ejb3-plugin
     jqa-graphml-plugin
+    jqa-graphql-plugin
     jqa-java-plugin
     jqa-java8-plugin
     jqa-javaee6-plugin
