@@ -1,6 +1,6 @@
 = Github Action Workflows for jQA
 
-This little and sweet repository contains the standard Github Action
-Workflows for all jQA framework repositories and a Bash script
-to keep the workflow defitions of all framework repositories in sync.
+This little and sweet repository contains the standard configuration
+for the `.github` directory of all jQA repositories and a Bash script
+to keep the `.github` directory of all repositories in sync.
 
