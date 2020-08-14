@@ -72,17 +72,18 @@ do
         mkdir -p -v "${temp_work_dir}/${repo}/.github/workflows"
 
     echo "${GREEN}###"
-    echo "### Copying workflows"
-    echo "### Project specific changes will be overridden!!!"
+    echo "### Copying Github configuration (workflows, issue templates, ...)"
+    echo "### Project specific or manual changes will be overridden!!!"
     echo "###${RESET}"
-    cp -v ${templ_dir}/*.yaml "${temp_work_dir}/${repo}/.github/workflows"
+    cp -r -v ${templ_dir}/* "${temp_work_dir}/${repo}/.github/"
 
-    pushd "${temp_work_dir}/${repo}/.github/workflows"
+    pushd "${temp_work_dir}/${repo}/.github"
 
-    if [[ $(git diff --exit-code --quiet 2>/dev/null >&2)$? == 1 ]];
+    git add -A -v . || exit 1
+
+    if [[ $(git diff --staged --exit-code --quiet 2>/dev/null >&2)$? == 1 ]];
     then
-        git add -A -v . || exit 1
-        git commit -a -m "Update of our Github Action workflows" || exit 1
+        git commit -a -m "Update of our Github repository configuration" || exit 1
         git push || exit 1
     else
         echo "No changes to commit and to push"
