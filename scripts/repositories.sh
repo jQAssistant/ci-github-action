@@ -2,6 +2,10 @@
 # Please add here ony the base name of repository. The
 # full URL will be constructed during execution time
 repositories=(
+    # Infrastructure repositories
+    jqa-idea-hub
+
+    # jQA modules
     jqa-asciidoc-report-plugin
     jqa-asciidoctor-utilities
     jqa-cdi-plugin
