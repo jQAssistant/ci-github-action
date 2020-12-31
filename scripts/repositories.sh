@@ -5,6 +5,9 @@ repositories=(
     # Infrastructure repositories
     jqa-idea-hub
 
+    # Projects related to jQA and by us
+    jqa-docker-image-official
+
     # jQA modules
     jqa-asciidoc-report-plugin
     jqa-asciidoctor-utilities
